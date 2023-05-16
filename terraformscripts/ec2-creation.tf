@@ -1,17 +1,9 @@
 provider "aws" {
-region = "eu-west-1"
+    region = "ap-south-1"
 }
-
-
 resource "aws_instance" "AWSInstance"{
-   ami = "ami-0b04ce5d876a9ba29"
-   instance_type = "t2.micro"
-   key_name = "mithuntechnologiesdevops"
-   security_groups = ["launch-wizard-2"]
-   tags = {
-   Name = "tomcatservers"
-   }
-   
+    ami = "ami-0fdea1353c525c182"
+    instance_type = "t2.micro"
+    key_name = "rahulns"
+    security_groups = ["launch-wizard-2"]
 }
-
-
