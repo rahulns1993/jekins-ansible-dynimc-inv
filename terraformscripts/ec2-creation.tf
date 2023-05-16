@@ -6,4 +6,7 @@ resource "aws_instance" "AWSInstance"{
     instance_type = "t2.micro"
     key_name = "rahulns"
     security_groups = ["launch-wizard-2"]
+    tags = {
+    Name = "tomcat"
+    }
 }
