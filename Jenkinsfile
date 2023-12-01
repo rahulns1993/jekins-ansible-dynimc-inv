@@ -1,5 +1,3 @@
-
-
 pipeline {
   agent { 
   label 'ansible'
@@ -13,7 +11,7 @@ pipeline {
     //Get the Code from GitHub Repo
     stage('CheckOutCode'){
       steps{
-        git branch: 'master', credentialsId: 'aeeaa4ad-45b4-4c30-9401-586ac501a9bb', url: 'https://github.com/MithunTechnologiesDevOps/jekins-ansible-dynimc-inv.git'
+        git branch: 'master', credentialsId: 'GitHubCredentials', url: 'https://github.com/rahulns1993/jekins-ansible-dynimc-inv.git'
       }
     }
     /* 
@@ -31,9 +29,9 @@ pipeline {
       steps {
         sh "whoami"
         //List the dymaic inventory just for verification
-        sh "ansible-inventory --graph -i inventory/aws_ec2.yaml"
+        sh "ansible-inventory --graph -i inventory/dynamic_aws_ec2.yaml"
         //Run playbook using dynamic inventory & limit exuection only fo tomcatservers.
-        sh "ansible-playbook -i inventory/aws_ec2.yaml  playbooks/tomcat-setup.yaml -u ec2-user --private-key=$AWS_EC2_PRIVATE_KEY --limit tomcatservers --ssh-common-args='-o StrictHostKeyChecking=no'"
+        sh "ansible-playbook -i inventory/dynamic_aws_ec2.yaml  playbooks/installTomcat16.yaml -u ec2-user --private-key=$AWS_EC2_PRIVATE_KEY --limit ansible_host --ssh-common-args='-o StrictHostKeyChecking=no'"
       }
     }
   
