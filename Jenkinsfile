@@ -16,7 +16,7 @@ pipeline {
         git branch: 'master', credentialsId: 'aeeaa4ad-45b4-4c30-9401-586ac501a9bb', url: 'https://github.com/MithunTechnologiesDevOps/jekins-ansible-dynimc-inv.git'
       }
     }
-     
+    /* 
     //Using Terrafrom can create the Servers
     
     stage('CreateServers'){
@@ -24,7 +24,7 @@ pipeline {
        sh "terraform  -chdir=terraformscripts init"
        sh "terraform  -chdir=terraformscripts apply --auto-approve"
       }
-    }
+    }*/
     
     //Run the playbook
     stage('RunPlaybook') {
